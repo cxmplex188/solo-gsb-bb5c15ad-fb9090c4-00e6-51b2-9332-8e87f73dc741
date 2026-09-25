@@ -1,0 +1,13 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_PATH: /data/race.db   # SQLite 数据库文件路径
+      SEED_DEMO_DATA: "1"            # 首次启动写入演示数据，设为 0 关闭
+    volumes:
+      - race-data:/data              # 持久化数据库
+
+volumes:
+  race-data:
